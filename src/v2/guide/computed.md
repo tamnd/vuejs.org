@@ -4,7 +4,7 @@ type: guide
 order: 5
 ---
 
-## Computed Properties
+## Những tính chất của computed
 
 In-template expressions are very convenient, but they are meant for simple operations. Putting too much logic in your templates can make them bloated and hard to maintain. For example:
 
