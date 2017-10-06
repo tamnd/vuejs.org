@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>Đối tượng Vue — Vue.js</title>
+    <title>The Vue Instance — Vue.js</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - Framework JavaScript linh động">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -17,12 +17,12 @@
     <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/instance.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Đối tượng Vue — Vue.js">
+    <meta property="og:title" content="The Vue Instance — Vue.js">
     <meta property="og:description" content="Vue.js - Framework JavaScript linh động">
     <meta property="og:image" content="https://vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Đối tượng Vue — Vue.js">
+    <meta name="twitter:title" content="The Vue Instance — Vue.js">
     <meta name="twitter:description" content="Vue.js - Framework JavaScript linh động">
     <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
 
@@ -304,7 +304,7 @@
     
     
     <li>
-      <a href="/v2/guide/index.html" class="sidebar-link">Giới thiệu</a>
+      <a href="/v2/guide/index.html" class="sidebar-link">Introduction</a>
     </li>
   
     
@@ -320,7 +320,7 @@
     
     
     <li>
-      <a href="/v2/guide/instance.html" class="sidebar-link current">Đối tượng Vue</a>
+      <a href="/v2/guide/instance.html" class="sidebar-link current">The Vue Instance</a>
     </li>
   
     
@@ -827,27 +827,25 @@
     
   
   
-    <h1>Đối tượng Vue</h1>
+    <h1>The Vue Instance</h1>
   
-  <h2 id="Tao-mot-doi-tuong-Vue"><a href="#Tao-mot-doi-tuong-Vue" class="headerlink" title="Tạo một đối tượng Vue"></a>Tạo một đối tượng Vue</h2><p class="tip">Một số tài liệu kĩ thuật ở Việt Nam dịch “instance” là “thể hiện.” Chúng tôi cho rằng cách dịch này nghe rất lạ tai với người Việt, nên sẽ dịch “instance” là “đối tượng” và giữ nguyên “object” là “object” như trong bản tiếng Anh.</p>
-
-<p>Một ứng dụng Vue luôn được bắt đầu bằng cách khởi tạo một <strong>đối tượng Vue</strong> (Vue instance) sử dụng hàm <code>Vue</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// các tùy chọn</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Tuy không liên kết chặt chẽ, thiết kế của Vue chịu ảnh hưởng từ pattern <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM</a>. Vì thế trong bản hướng dẫn này, chúng tôi quy ước sử dụng tên biến <code>vm</code> (viết tắt của ViewModel) để chỉ một đối tượng Vue.</p>
-<p>Khi khởi tạo một đối tượng Vue, bạn truyền vào một object <strong><code>options</code></strong> với các tùy chọn. Phần lớn bản hướng dẫn này sẽ mô tả cách sử dụng các tùy chọn đó để tạo ra behavior (hành vi) mong muốn. Bạn cũng có thể tham khảo danh sách đầy đủ các tùy chọn ở trang <a href="../api/#Options-Data">API</a>.</p>
-<p>Một ứng dụng Vue bao gồm một <strong>đối tượng Vue gốc</strong> (<strong>root Vue instance</strong>) được tạo với lệnh <code>new Vue</code>. Ứng dụng này cũng thường được sắp xếp thành một cây gồm các component lồng nhau và tái sử dụng được. Ví dụ, cây component của một ứng dụng todo có thể trông như thế này:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Root Vue instance</div><div class="line">|- TodoList</div><div class="line">   |- TodoItem</div><div class="line">      |- DeleteTodoButton</div><div class="line">      |- EditTodoButton</div><div class="line">   |- TodoListFooter</div><div class="line">      |- ClearTodosButton</div><div class="line">      |- TodoListStatistics</div></pre></td></tr></table></figure>
-<p>Chúng ta sẽ nói chi tiết về <a href="components.html">hệ thống component</a> sau. Hiện tại, bạn chỉ cần biết rằng một component Vue cũng là một đối tượng Vue và do đó cũng nhận cùng một object <code>options</code> (trừ một số tùy chọn chỉ dành riêng cho root).</p>
-<h2 id="Du-lieu-va-phuong-thuc"><a href="#Du-lieu-va-phuong-thuc" class="headerlink" title="Dữ liệu và phương thức"></a>Dữ liệu và phương thức</h2><p>Khi một đối tượng Vue được khởi tạo, tất cả các thuộc tính (property) được tìm thấy trong object <code>data</code> sẽ được thêm vào <strong>reactivity system</strong> (hiểu nôm na là “hệ thống phản ứng”) của Vue. Điều này có nghĩa là view sẽ “react” (phản ứng) khi giá trị của các thuộc tính này thay đổi, và tự cập nhật tương ứng với các giá trị mới.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Chúng ta khởi tạo một object "data"</span></div><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">// Object này được truyền vào một đối tượng Vue</span></div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// vm.a và data.a cùng trỏ đến một đối tượng!</span></div><div class="line">vm.a === data.a <span class="comment">// =&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// Thay đổi thuộc tính của vm cũng</span></div><div class="line"><span class="comment">// ảnh hưởng đến dữ liệu ban đầu</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// =&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... và ngược lại</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// =&gt; 3</span></div></pre></td></tr></table></figure>
-<p>Khi dữ liệu thay đổi, view sẽ render lại. Cũng nên lưu ý rằng một thuộc tính trong object <code>data</code> chỉ trở nên reactive nếu nó đã tồn tại khi chúng ta khởi tạo đối tượng Vue. Có nghĩa là nếu bạn thêm vào một thuộc tính mới như sau:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">vm.b = <span class="string">'Aloha'</span></div></pre></td></tr></table></figure>
-<p>thì những thay đổi với <code>b</code> sẽ không kích hoạt thay đổi trên view. Vì thế, nếu bạn biết là sau này mình sẽ cần một thuộc tính nào đó, nhưng khi khởi tạo Vue thì thuộc tính này là rỗng hoặc chưa tồn tại, bạn sẽ cần gán cho nó một giá trị ban đầu, ví dụ như thế này:</p>
+  <h2 id="Creating-a-Vue-Instance"><a href="#Creating-a-Vue-Instance" class="headerlink" title="Creating a Vue Instance"></a>Creating a Vue Instance</h2><p>Every Vue application starts by creating a new <strong>Vue instance</strong> with the <code>Vue</code> function:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// options</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Although not strictly associated with the <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM pattern</a>, Vue’s design was partly inspired by it. As a convention, we often use the variable <code>vm</code> (short for ViewModel) to refer to our Vue instance.</p>
+<p>When you create a Vue instance, you pass in an <strong>options object</strong>. The majority of this guide describes how you can use these options to create your desired behavior. For reference, you can also browse the full list of options in the <a href="../api/#Options-Data">API reference</a>.</p>
+<p>A Vue application consists of a <strong>root Vue instance</strong> created with <code>new Vue</code>, optionally organized into a tree of nested, reusable components. For example, a todo app’s component tree might look like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Root Instance</div><div class="line">|- TodoList</div><div class="line">   |- TodoItem</div><div class="line">      |- DeleteTodoButton</div><div class="line">      |- EditTodoButton</div><div class="line">   |- TodoListFooter</div><div class="line">      |- ClearTodosButton</div><div class="line">      |- TodoListStatistics</div></pre></td></tr></table></figure>
+<p>We’ll talk about <a href="components.html">the component system</a> in detail later. For now, just know that all Vue components are also Vue instances, and so accept the same options object (except for a few root-specific options).</p>
+<h2 id="Data-and-Methods"><a href="#Data-and-Methods" class="headerlink" title="Data and Methods"></a>Data and Methods</h2><p>When a Vue instance is created, it adds all the properties found in its <code>data</code> object to Vue’s <strong>reactivity system</strong>. When the values of those properties change, the view will “react”, updating to match the new values.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Our data object</span></div><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">// The object is added to a Vue instance</span></div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// These reference the same object!</span></div><div class="line">vm.a === data.a <span class="comment">// =&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// Setting the property on the instance</span></div><div class="line"><span class="comment">// also affects the original data</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// =&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... and vice-versa</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// =&gt; 3</span></div></pre></td></tr></table></figure>
+<p>When this data changes, the view will re-render. It should be noted that properties in <code>data</code> are only <strong>reactive</strong> if they existed when the instance was created. That means if you add a new property, like:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">vm.b = <span class="string">'hi'</span></div></pre></td></tr></table></figure>
+<p>Then changes to <code>b</code> will not trigger any view updates. If you know you’ll need a property later, but it starts out empty or non-existent, you’ll need to set some initial value. For example:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  newTodoText: <span class="string">''</span>,</div><div class="line">  visitCount: <span class="number">0</span>,</div><div class="line">  hideCompletedTodos: <span class="literal">false</span>,</div><div class="line">  todos: [],</div><div class="line">  error: <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Ngoài <code>data</code>, một đối tượng Vue cũng hỗ trợ một số thuộc tính và phương thức đối tượng (instance properties &amp; methods) hữu dụng khác. Các thuộc tính và phương thức này được bắt đầu bằng kí hiệu <code>$</code> để phân biệt với thuộc tính và phương thức do người dùng định nghĩa. Ví dụ:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example'</span>,</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// =&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// =&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch là một phương thức của đối tượng Vue</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newValue, oldValue</span>) </span>&#123;</div><div class="line">  <span class="comment">// Hàm callback này sẽ được gọi khi `vm.a` thay đổi</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Bạn cũng có thể tham khảo danh sách đầy đủ các thuộc tính và phương thức đối tượng trên trang <a href="../api/#Instance-Properties">API</a>.</p>
-<h2 id="Vong-doi-cua-doi-tuong"><a href="#Vong-doi-cua-doi-tuong" class="headerlink" title="Vòng đời của đối tượng"></a>Vòng đời của đối tượng</h2><p>Khi được khởi tạo, một đối tượng Vue sẽ đi qua nhiều bước khác nhau - cài đặt quan sát dữ liệu (data observation), biên dịch template, gắn kết vào DOM, cập nhật DOM khi dữ liệu thay đổi v.v. Trong suốt tiến trình này, nó cũng sẽ thực thi một số hàm gọi là <strong>lifecycle hooks</strong>, giúp người dùng thêm code của mình vào các giai đoạn (stage) cụ thể trong vòng đời của đối tượng.</p>
+<p>In addition to data properties, Vue instances expose a number of useful instance properties and methods. These are prefixed with <code>$</code> to differentiate them from user-defined properties. For example:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example'</span>,</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// =&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// =&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch is an instance method</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newValue, oldValue</span>) </span>&#123;</div><div class="line">  <span class="comment">// This callback will be called when `vm.a` changes</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>In the future, you can consult the <a href="../api/#Instance-Properties">API reference</a> for a full list of instance properties and methods.</p>
+<h2 id="Instance-Lifecycle-Hooks"><a href="#Instance-Lifecycle-Hooks" class="headerlink" title="Instance Lifecycle Hooks"></a>Instance Lifecycle Hooks</h2><p>Each Vue instance goes through a series of initialization steps when it’s created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it also runs functions called <strong>lifecycle hooks</strong>, giving users the opportunity to add their own code at specific stages.</p>
 <p>For example, the <a href="../api/#created"><code>created</code></a> hook can be used to run code after an instance is created:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    a: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// `this` points to the vm instance</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// =&gt; "a is: 1"</span></div></pre></td></tr></table></figure>
 <p>There are also other hooks which will be called at different stages of the instance’s lifecycle, such as <a href="../api/#mounted"><code>mounted</code></a>, <a href="../api/#updated"><code>updated</code></a>, and <a href="../api/#destroyed"><code>destroyed</code></a>. All lifecycle hooks are called with their <code>this</code> context pointing to the Vue instance invoking it.</p>
@@ -859,7 +857,7 @@
   
     <div class="guide-links">
       
-        <span>← <a href="/v2/guide/index.html">Giới thiệu</a></span>
+        <span>← <a href="/v2/guide/index.html">Introduction</a></span>
       
       
         <span style="float: right;"><a href="/v2/guide/syntax.html">Template Syntax</a> →</span>
