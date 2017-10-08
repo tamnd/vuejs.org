@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>Conditional Rendering — Vue.js</title>
+    <title>Render theo điều kiện — Vue.js</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - Framework JavaScript linh động">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -17,12 +17,12 @@
     <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/conditional.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Conditional Rendering — Vue.js">
+    <meta property="og:title" content="Render theo điều kiện — Vue.js">
     <meta property="og:description" content="Vue.js - Framework JavaScript linh động">
     <meta property="og:image" content="https://vi.vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Conditional Rendering — Vue.js">
+    <meta name="twitter:title" content="Render theo điều kiện — Vue.js">
     <meta name="twitter:description" content="Vue.js - Framework JavaScript linh động">
     <meta name="twitter:image" content="https://vi.vuejs.org/images/logo.png">
 
@@ -386,7 +386,7 @@
     
     
     <li>
-      <a href="/v2/guide/conditional.html" class="sidebar-link current">Conditional Rendering</a>
+      <a href="/v2/guide/conditional.html" class="sidebar-link current">Render theo điều kiện</a>
     </li>
   
     
@@ -829,42 +829,41 @@
     
   
   
-    <h1>Conditional Rendering</h1>
+    <h1>Render theo điều kiện</h1>
   
-  <h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a><code>v-if</code></h2><p>In string templates, for example Handlebars, we would write a conditional block like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Handlebars template --&gt;</span></div><div class="line">&#123;&#123;#if ok&#125;&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
-<p>In Vue, we use the <code>v-if</code> directive to achieve the same:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>It is also possible to add an “else” block with <code>v-else</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-else</span>&gt;</span>No<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Conditional-Groups-with-v-if-on-lt-template-gt"><a href="#Conditional-Groups-with-v-if-on-lt-template-gt" class="headerlink" title="Conditional Groups with v-if on &lt;template&gt;"></a>Conditional Groups with <code>v-if</code> on <code>&lt;template&gt;</code></h3><p>Because <code>v-if</code> is a directive, it has to be attached to a single element. But what if we want to toggle more than one element? In this case we can use <code>v-if</code> on a <code>&lt;template&gt;</code> element, which serves as an invisible wrapper. The final rendered result will not include the <code>&lt;template&gt;</code> element.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a><code>v-else</code></h3><p>You can use the <code>v-else</code> directive to indicate an “else block” for <code>v-if</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"Math.random() &gt; 0.5"</span>&gt;</span></div><div class="line">  Now you see me</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  Now you don't</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>A <code>v-else</code> element must immediately follow a <code>v-if</code> or a <code>v-else-if</code> element - otherwise it will not be recognized.</p>
+  <h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a><code>v-if</code></h2><p>Trong các thư viện biên dịch template như <a href="http://handlebarsjs.com/" target="_blank" rel="external">Handlebars</a>, thông thường chúng ta sẽ viết các khối điều kiện (conditional block) như sau:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">&#123;&#123;#if ok&#125;&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Mọi việc ổn cả<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
+<p>Để làm điều này với Vue, chúng ta sử dụng directive <code>v-if</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Mọi việc ổn cả<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Chúng ta cũng có thể thêm khối “else” bằng <code>v-else</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Mọi việc ổn cả<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-else</span>&gt;</span>Có gì đó sai sai<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Nhom-dieu-kien-voi-v-if-tren-the-lt-template-gt"><a href="#Nhom-dieu-kien-voi-v-if-tren-the-lt-template-gt" class="headerlink" title="Nhóm điều kiện với v-if trên thẻ &lt;template&gt;"></a>Nhóm điều kiện với <code>v-if</code> trên thẻ <code>&lt;template&gt;</code></h3><p>Vì là một directive, <code>v-if</code> phải được dùng trên một phần tử đơn lẻ (single element) như <code>&lt;p&gt;</code> hoặc <code>&lt;div&gt;</code>. Nếu chúng ta muốn bật tắt một nhóm các phần tử thì sao? Chỉ cần dùng <code>v-if</code> trên một phần tử <code>&lt;template&gt;</code> với vai trò wrap (bọc) các phần tử lại thành một nhóm. Kết quả render cuối cùng sẽ không có phần tử <code>&lt;template&gt;</code> này.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Anh chàng chăn lợn<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Ơ này, Augustin thân mến ơi<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Mọi việc đều như ý, như ý, như ý<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a><code>v-else</code></h3><p>Như trên đã nhắc đến, ta có thể dùng directive <code>v-else</code> để chỉ định một khối “else” cho <code>v-if</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"Math.random() &gt; 0.5"</span>&gt;</span></div><div class="line">  Tài</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  Xỉu</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Để được coi là hợp lệ, phần tử có <code>v-else</code> phải theo ngay sau một phần tử <code>v-if</code> hoặc <code>v-else-if</code>.</p>
 <h3 id="v-else-if"><a href="#v-else-if" class="headerlink" title="v-else-if"></a><code>v-else-if</code></h3><blockquote>
-<p>New in 2.1.0+</p>
+<p>2.1.0+</p>
 </blockquote>
-<p>The <code>v-else-if</code>, as the name suggests, serves as an “else if block” for <code>v-if</code>. It can also be chained multiple times:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type === 'A'"</span>&gt;</span></div><div class="line">  A</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'B'"</span>&gt;</span></div><div class="line">  B</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'C'"</span>&gt;</span></div><div class="line">  C</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  Not A/B/C</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Similar to <code>v-else</code>, a <code>v-else-if</code> element must immediately follow a <code>v-if</code> or a <code>v-else-if</code> element.</p>
-<h3 id="Controlling-Reusable-Elements-with-key"><a href="#Controlling-Reusable-Elements-with-key" class="headerlink" title="Controlling Reusable Elements with key"></a>Controlling Reusable Elements with <code>key</code></h3><p>Vue tries to render elements as efficiently as possible, often re-using them instead of rendering from scratch. Beyond helping make Vue very fast, this can have some useful advantages. For example, if you allow users to toggle between multiple login types:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Then switching the <code>loginType</code> in the code above will not erase what the user has already entered. Since both templates use the same elements, the <code>&lt;input&gt;</code> is not replaced - just its <code>placeholder</code>.</p>
-<p>Check it out for yourself by entering some text in the input, then pressing the toggle button:</p>
+<p>Directive <code>v-else-if</code> đóng vai trò một khối “else if” cho <code>v-if</code>. Directive này có thể được dùng nhiều lần nối tiếp nhau:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type === 'A'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'B'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'C'"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'D'"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span>Chiến Sĩ không thể nhớ nổi<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Tương tự với <code>v-else</code>, phần tử với <code>v-else-if</code> phải theo ngay sau một phần tử <code>v-if</code> hoặc <code>v-else-if</code>.</p>
+<h3 id="Dieu-khien-viec-tai-su-dung-phan-tu-voi-key"><a href="#Dieu-khien-viec-tai-su-dung-phan-tu-voi-key" class="headerlink" title="Điều khiển việc tái sử dụng phần tử với key"></a>Điều khiển việc tái sử dụng phần tử với <code>key</code></h3><p>Vue cố gắng render các phần tử một cách hiệu quả đến mức có thể, với một trong những cách làm là sử dụng lại thay vì tạo mới từ đầu. Ngoài việc giúp cho Vue thao tác cực kì nhanh, điều này còn mang lại một số lợi ích đáng kể khác. Ví dụ, nếu bạn cho phép người dùng được đăng nhập bằng username hoặc email:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Nhập username"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Nhập địa chỉ email"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>thì việc chuyển đổi giá trị của <code>loginType</code> trong đoạn code trên sẽ không xóa đi thông tin mà người dùng đã điền vào. Vì cả hai <code>&lt;template&gt;</code> dùng các phần tử giống nhau, phần tử <code>&lt;input&gt;</code> sẽ không bị thay thế, chỉ có thuộc tính <code>placeholder</code> là thay đổi. Bạn có thể kiểm tra điều này bằng cách điền vào một ít thông tin bất kì rồi bấm vào nút bên dưới:</p>
 
 <div id="no-key-example" class="demo">
   <div>
     <template v-if="loginType === 'username'">
       <label>Username</label>
-      <input placeholder="Enter your username">
+      <input placeholder="Nhập username">
     </template>
     <template v-else="">
       <label>Email</label>
-      <input placeholder="Enter your email address">
+      <input placeholder="Nhập địa chỉ email">
     </template>
   </div>
-  <button @click="toggleLoginType">Toggle login type</button>
+  <button @click="toggleLoginType">Thay đổi kiểu đăng nhập</button>
 </div>
 <script>
 new Vue({
@@ -880,22 +879,22 @@ new Vue({
 })
 </script>
 
-<p>This isn’t always desirable though, so Vue offers a way for you to say, “These two elements are completely separate - don’t re-use them.” Add a <code>key</code> attribute with unique values:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span> <span class="attr">key</span>=<span class="string">"username-input"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span> <span class="attr">key</span>=<span class="string">"email-input"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Now those inputs will be rendered from scratch each time you toggle. See for yourself:</p>
+<p>Tuy nhiên không phải lúc nào đây cũng là điều bạn mong muốn. Vì thế, Vue cung cấp một thuộc tính gọi là <code>key</code>. Khi dùng <code>key</code> với giá trị độc nhất (unique), về căn bản bạn đang dặn Vue “xem hai phần tử này là hoàn toàn khác nhau và đừng dùng lại”:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Nhập username"</span> <span class="attr">key</span>=<span class="string">"username-input"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Nhập địa chỉ email"</span> <span class="attr">key</span>=<span class="string">"email-input"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Bây giờ thì hai phần tử <code>&lt;input&gt;</code> này sẽ được render lại từ đầu mỗi khi giá trị <code>loginType</code> được thay đổi. Bạn có thể kiểm chứng:</p>
 
 <div id="key-example" class="demo">
   <div>
     <template v-if="loginType === 'username'">
       <label>Username</label>
-      <input placeholder="Enter your username" key="username-input">
+      <input placeholder="Nhập username" key="username-input">
     </template>
     <template v-else="">
       <label>Email</label>
-      <input placeholder="Enter your email address" key="email-input">
+      <input placeholder="Nhập địa chỉ email" key="email-input">
     </template>
   </div>
-  <button @click="toggleLoginType">Toggle login type</button>
+  <button @click="toggleLoginType">Thay đổi kiểu đăng nhập</button>
 </div>
 <script>
 new Vue({
@@ -911,17 +910,17 @@ new Vue({
 })
 </script>
 
-<p>Note that the <code>&lt;label&gt;</code> elements are still efficiently re-used, because they don’t have <code>key</code> attributes.</p>
-<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a><code>v-show</code></h2><p>Another option for conditionally displaying an element is the <code>v-show</code> directive. The usage is largely the same:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-show</span>=<span class="string">"ok"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>The difference is that an element with <code>v-show</code> will always be rendered and remain in the DOM; <code>v-show</code> only toggles the <code>display</code> CSS property of the element.</p>
-<p class="tip">Note that <code>v-show</code> doesn’t support the <code>&lt;template&gt;</code> syntax, nor does it work with <code>v-else</code>.</p>
+<p>Lưu ý rằng các phần tử <code>&lt;label&gt;</code> vẫn được sử dụng lại vì không có thuộc tính <code>key</code>.</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a><code>v-show</code></h2><p>Một lựa chọn nữa cho việc hiện hoặc ẩn một phần tử web theo điều kiện là directive <code>v-show</code>. Cách dùng <code>v-show</code> cũng tương tự với <code>v-if</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-show</span>=<span class="string">"ok"</span>&gt;</span>Xin chào!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Điểm khác biệt giữa <code>v-show</code> và <code>v-if</code> là phần tử được đánh dấu với <code>v-show</code> sẽ luôn luôn được render và chứa trong DOM; <code>v-show</code> chỉ bật tắt thuộc tính <code>display</code> của phần tử này.</p>
+<p class="tip"><code>v-show</code> không hỗ trợ cú pháp <code>&lt;template&gt;</code> và cũng không hoạt động với <code>v-else</code>.</p>
 
-<h2 id="v-if-vs-v-show"><a href="#v-if-vs-v-show" class="headerlink" title="v-if vs v-show"></a><code>v-if</code> vs <code>v-show</code></h2><p><code>v-if</code> is “real” conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.</p>
-<p><code>v-if</code> is also <strong>lazy</strong>: if the condition is false on initial render, it will not do anything - the conditional block won’t be rendered until the condition becomes true for the first time.</p>
-<p>In comparison, <code>v-show</code> is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.</p>
-<p>Generally speaking, <code>v-if</code> has higher toggle costs while <code>v-show</code> has higher initial render costs. So prefer <code>v-show</code> if you need to toggle something very often, and prefer <code>v-if</code> if the condition is unlikely to change at runtime.</p>
-<h2 id="v-if-with-v-for"><a href="#v-if-with-v-for" class="headerlink" title="v-if with v-for"></a><code>v-if</code> with <code>v-for</code></h2><p>When used together with <code>v-if</code>, <code>v-for</code> has a higher priority than <code>v-if</code>. See the <a href="../guide/list.html#V-for-and-v-if">list rendering guide</a> for details.</p>
+<h2 id="v-if-va-v-show-–-khi-nao-thi-dung-gi"><a href="#v-if-va-v-show-–-khi-nao-thi-dung-gi" class="headerlink" title="v-if và v-show – khi nào thì dùng gì"></a><code>v-if</code> và <code>v-show</code> – khi nào thì dùng gì</h2><p><code>v-if</code> là render theo điều kiện “thật sự,” vì nó bảo đảm các event listener và component con bên trong khối điều kiện được hủy và khởi tạo lại trong quá trình bật/tắt.</p>
+<p><code>v-if</code> cũng <strong>lười biếng</strong> (lazy): nếu giá trị của điều kiện là <code>false</code> trong lần render đầu tiên, nó sẽ không làm gì cả - khối điều kiện sẽ không được render cho đến khi điều kiện trở thành <code>true</code> lần đầu tiên.</p>
+<p>Trong khi đó, <code>v-show</code> đơn giản hơn nhiều - phần tử sẽ được render bất kể điều kiện là đúng hay sai, và chỉ được hiện/giấu đi bằng CSS.</p>
+<p>Nói chung, <code>v-if</code> có phí tổn bật/tắt cao, còn <code>v-show</code> có phí tổn render cao. Vì thế, nếu bạn cần bật/tắt thường xuyên, hãy dùng <code>v-show</code>. Ngược lại, nếu điều kiện ít khi thay đổi trong suốt vòng đời của ứng dụng, hãy dùng <code>v-if</code>.</p>
+<h2 id="v-if-dung-voi-v-for"><a href="#v-if-dung-voi-v-for" class="headerlink" title="v-if dùng với v-for"></a><code>v-if</code> dùng với <code>v-for</code></h2><p>Khi dùng chung với <code>v-if</code>, <code>v-for</code> có độ ưu tiên cao hơn. Xem chi tiết tại <a href="../guide/list.html#V-for-and-v-if">hướng dẫn về render danh sách</a>.</p>
 
   
     <div class="guide-links">
