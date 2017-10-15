@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>List Rendering — Vue.js</title>
+    <title>Render danh sách — Vue.js</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - Framework JavaScript linh động">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -17,12 +17,12 @@
     <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/list.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="List Rendering — Vue.js">
+    <meta property="og:title" content="Render danh sách — Vue.js">
     <meta property="og:description" content="Vue.js - Framework JavaScript linh động">
     <meta property="og:image" content="https://vi.vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="List Rendering — Vue.js">
+    <meta name="twitter:title" content="Render danh sách — Vue.js">
     <meta name="twitter:description" content="Vue.js - Framework JavaScript linh động">
     <meta name="twitter:image" content="https://vi.vuejs.org/images/logo.png">
 
@@ -412,7 +412,7 @@
     
     
     <li>
-      <a href="/v2/guide/list.html" class="sidebar-link current">List Rendering</a>
+      <a href="/v2/guide/list.html" class="sidebar-link current">Render danh sách</a>
     </li>
   
     
@@ -839,16 +839,18 @@
     
   
   
-    <h1>List Rendering</h1>
+    <h1>Render danh sách</h1>
   
-  <h2 id="Mapping-an-Array-to-Elements-with-v-for"><a href="#Mapping-an-Array-to-Elements-with-v-for" class="headerlink" title="Mapping an Array to Elements with v-for"></a>Mapping an Array to Elements with <code>v-for</code></h2><p>We can use the <code>v-for</code> directive to render a list of items based on an array. The <code>v-for</code> directive requires a special syntax in the form of <code>item in items</code>, where <code>items</code> is the source data array and <code>item</code> is an <strong>alias</strong> for the array element being iterated on:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">    &#123;&#123; item.message &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example1 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-1'</span>,</div><div class="line">  data: &#123;</div><div class="line">    items: [</div><div class="line">      &#123; <span class="attr">message</span>: <span class="string">'Foo'</span> &#125;,</div><div class="line">      &#123; <span class="attr">message</span>: <span class="string">'Bar'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Result:</p>
+  <h2 id="Map-mot-mang-thanh-cac-phan-tu-web-voi-v-for"><a href="#Map-mot-mang-thanh-cac-phan-tu-web-voi-v-for" class="headerlink" title="Map một mảng thành các phần tử web với v-for"></a>Map một mảng thành các phần tử web với <code>v-for</code></h2><p class="tip">Một số tài liệu kĩ thuật dịch “map” thành “ánh xạ” hoặc “đối ứng.” Để đơn giản, trong bảng hướng dẫn này chúng tôi sẽ giữ nguyên từ tiếng Anh là “map.”</p>
+
+<p>Chúng ta có thể dùng directive <code>v-for</code> để render một danh sách các item dựa trên một mảng. Directive <code>v-for</code> đòi hỏi một cú pháp đặc biệt dưới dạng <code>item in items</code>, trong đó <code>items</code> là mảng dữ liệu nguồn và <code>item</code> trỏ đến phần tử mảng đang được duyệt đến:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">    &#123;&#123; item.name &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example1 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-1'</span>,</div><div class="line">  data: &#123;</div><div class="line">    items: [</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Cà phê'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Trà đặc'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Bò húc'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Kết quả:</p>
 
 <ul id="example-1" class="demo">
   <li v-for="item in items">
-    {{item.message}}
+    {{item.name}}
   </li>
 </ul>
 <script>
@@ -856,8 +858,9 @@ var example1 = new Vue({
   el: '#example-1',
   data: {
     items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
+      { name: 'Cà phê' },
+      { name: 'Trà đặc' },
+      { name: 'Bò húc' }
     ]
   },
   watch: {
@@ -868,14 +871,14 @@ var example1 = new Vue({
 })
 </script>
 
-<p>Inside <code>v-for</code> blocks we have full access to parent scope properties. <code>v-for</code> also supports an optional second argument for the index of the current item.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    &#123;&#123; parentMessage &#125;&#125; - &#123;&#123; index &#125;&#125; - &#123;&#123; item.message &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-2'</span>,</div><div class="line">  data: &#123;</div><div class="line">    parentMessage: <span class="string">'Parent'</span>,</div><div class="line">    items: [</div><div class="line">      &#123; <span class="attr">message</span>: <span class="string">'Foo'</span> &#125;,</div><div class="line">      &#123; <span class="attr">message</span>: <span class="string">'Bar'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Bên trong vòng lặp <code>v-for</code> chúng ta có toàn quyền truy xuất đến các thuộc tính của scope cha. <code>v-for</code> cũng hỗ trợ một tham số thứ hai (không bắt buộc) chỉ số thứ tự (index) của phần tử mảng hiện hành.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    &#123;&#123; parentMessage &#125;&#125; - &#123;&#123; index &#125;&#125; - &#123;&#123; item.name &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-2'</span>,</div><div class="line">  data: &#123;</div><div class="line">    parentMessage: <span class="string">'Parent'</span>,</div><div class="line">    items: [</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Cà phê'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Trà đặc'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'Bò húc'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>Result:</p>
 
 <ul id="example-2" class="demo">
   <li v-for="(item, index) in items">
-    {{ parentMessage }} - {{ index }} - {{ item.message }}
+    {{ parentMessage }} - {{ index }} - {{ item.name }}
   </li>
 </ul>
 <script>
@@ -884,8 +887,9 @@ var example2 = new Vue({
   data: {
     parentMessage: 'Parent',
     items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
+      { name: 'Cà phê' },
+      { name: 'Trà đặc' },
+      { name: 'Bò húc' }
     ]
   },
   watch: {
@@ -896,11 +900,11 @@ var example2 = new Vue({
 })
 </script>
 
-<p>You can also use <code>of</code> as the delimiter instead of <code>in</code>, so that it is closer to JavaScript’s syntax for iterators:</p>
+<p>Bạn cũng có thể dùng <code>of</code> để phân cách thay vì <code>in</code>. Cách này cũng gần hơn với cú pháp vòng lặp trong JavaScript.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item of items"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="v-for-with-an-Object"><a href="#v-for-with-an-Object" class="headerlink" title="v-for with an Object"></a><code>v-for</code> with an Object</h2><p>You can also use <code>v-for</code> to iterate through the properties of an object.</p>
+<h2 id="Dung-v-for-voi-mot-object"><a href="#Dung-v-for-voi-mot-object" class="headerlink" title="Dùng v-for với một object"></a>Dùng <code>v-for</code> với một object</h2><p>Bạn cũng có thể dùng <code>v-for</code> để duyệt qua các thuộc tính của một object.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"v-for-object"</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"value in object"</span>&gt;</span></div><div class="line">    &#123;&#123; value &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#v-for-object'</span>,</div><div class="line">  data: &#123;</div><div class="line">    object: &#123;</div><div class="line">      firstName: <span class="string">'John'</span>,</div><div class="line">      lastName: <span class="string">'Doe'</span>,</div><div class="line">      age: <span class="number">30</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#v-for-object'</span>,</div><div class="line">  data: &#123;</div><div class="line">    object: &#123;</div><div class="line">      <span class="comment">// tất nhiên chúng ta đều biết ông Bành Tổ không phải</span></div><div class="line">      <span class="comment">// họ Bành tên Tổ, nhưng đây chỉ là một ví dụ…</span></div><div class="line">      <span class="string">'họ'</span>: <span class="string">'Bành'</span>,</div><div class="line">      <span class="string">'tên'</span>: <span class="string">'Tổ'</span>,</div><div class="line">      <span class="string">'tuổi'</span>: <span class="number">800</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>Result:</p>
 
 <ul id="v-for-object" class="demo">
@@ -913,15 +917,15 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: 30
+      'họ': 'Bành',
+      'tên': 'Tổ',
+      'tuổi': 800
     }
   }
 })
 </script>
 
-<p>You can also provide a second argument for the key:</p>
+<p>Bạn cũng có thể cung cấp tham số thứ hai dùng cho khóa (key) của thuộc tính:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(value, key) in object"</span>&gt;</span></div><div class="line">  &#123;&#123; key &#125;&#125;: &#123;&#123; value &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 
 <div id="v-for-object-value-key" class="demo">
@@ -934,15 +938,15 @@ new Vue({
   el: '#v-for-object-value-key',
   data: {
     object: {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: 30
+      'họ': 'Bành',
+      'tên': 'Tổ',
+      'tuổi': 800
     }
   }
 })
 </script>
 
-<p>And another for the index:</p>
+<p>Tham số thứ ba chỉ thứ tự của thuộc tính:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(value, key, index) in object"</span>&gt;</span></div><div class="line">  &#123;&#123; index &#125;&#125;. &#123;&#123; key &#125;&#125;: &#123;&#123; value &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 
 <div id="v-for-object-value-key-index" class="demo">
@@ -955,23 +959,23 @@ new Vue({
   el: '#v-for-object-value-key-index',
   data: {
     object: {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: 30
+      'họ': 'Bành',
+      'tên': 'Tổ',
+      'tuổi': 800
     }
   }
 })
 </script>
 
-<p class="tip">When iterating over an object, the order is based on the key enumeration order of <code>Object.keys()</code>, which is <strong>not</strong> guaranteed to be consistent across JavaScript engine implementations.</p>
+<p class="tip">Khi duyệt qua một object, thứ tự các thuộc tính được dựa trên kết quả trả về của <code>Object.keys()</code>. Kết quả này <strong>không đảm bảo</strong> được đồng nhất giữa các engine JavaScript khác nhau.</p>
 
-<h2 id="key"><a href="#key" class="headerlink" title="key"></a><code>key</code></h2><p>When Vue is updating a list of elements rendered with <code>v-for</code>, by default it uses an “in-place patch” strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index. This is similar to the behavior of <code>track-by=&quot;$index&quot;</code> in Vue 1.x.</p>
-<p>This default mode is efficient, but only suitable <strong>when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)</strong>.</p>
-<p>To give Vue a hint so that it can track each node’s identity, and thus reuse and reorder existing elements, you need to provide a unique <code>key</code> attribute for each item. An ideal value for <code>key</code> would be the unique id of each item. This special attribute is a rough equivalent to <code>track-by</code> in 1.x, but it works like an attribute, so you need to use <code>v-bind</code> to bind it to dynamic values (using shorthand here):</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- content --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>It is recommended to provide a <code>key</code> with <code>v-for</code> whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.</p>
-<p>Since it’s a generic mechanism for Vue to identify nodes, the <code>key</code> also has other uses that are not specifically tied to <code>v-for</code>, as we will see later in the guide.</p>
-<h2 id="Array-Change-Detection"><a href="#Array-Change-Detection" class="headerlink" title="Array Change Detection"></a>Array Change Detection</h2><h3 id="Mutation-Methods"><a href="#Mutation-Methods" class="headerlink" title="Mutation Methods"></a>Mutation Methods</h3><p>Vue wraps an observed array’s mutation methods so they will also trigger view updates. The wrapped methods are:</p>
+<h2 id="key"><a href="#key" class="headerlink" title="key"></a><code>key</code></h2><p>Khi cập nhật một danh sách các phần tử được render với <code>v-for</code>, mặc định Vue sẽ sử dụng kĩ thuật “inline patch” (hiểu nôm na là “vá tại chỗ”). Điều này có nghĩa là nếu thứ tự của các item thay đổi, thay vì dịch chuyển các phần tử web theo thứ tự tương ứng, Vue sẽ patch mỗi phần tử tại chỗ và bảo đảm phản ánh đúng những gì cần phải render tại vị trí đó. Cách xử lí này tương tự với <code>track-by=&quot;$index&quot;</code> trong Vue 1.x.</p>
+<p>Kĩ thuật nói trên rất hiệu quả, nhưng chỉ thích hợp <strong>khi danh sách cần render không phụ thuộc vào trạng thái của component con (child component state) hay trạng thái DOM tạm thời (ví dụ như thông tin người dùng nhập vào form)</strong>.</p>
+<p>Để Vue có thể nhận ra từng node và nhờ đó có thể tái sử dụng và sắp xếp các phần tử, bạn cần cung cấp một thuộc tính <code>key</code> với giá trị độc nhất cho từng item (ví dụ, <code>id</code> sẽ là một giá trị <code>key</code> lí tưởng). <code>key</code> tương đương với <code>track-by</code> trong 1.x, nhưng vì nó là một thuộc tính, bạn cần dùng <code>v-bind</code> để bind nó vào các giá trị động như sau:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ở đây ta dùng shorthand `:key` thay vì `v-bind:key` --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- nội dung --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Chúng tôi khuyến khích sử dụng <code>key</code> bất cứ khi nào bạn dùng <code>v-for</code>, trừ phi nội dung DOM được duyệt qua quá đơn giản hoặc bạn đang cố ý sử dụng behavior mặc định của Vue để tăng tốc cho ứng dụng.</p>
+<p>Vì đây là cơ chế chung để Vue nhận dạng các node, <code>key</code> còn có một số cách dùng khác không thật liên quan <code>v-for</code>. Chúng ta sẽ bàn về vấn đề này ở một phần sau.</p>
+<h2 id="Phat-hien-thay-doi-trong-mang"><a href="#Phat-hien-thay-doi-trong-mang" class="headerlink" title="Phát hiện thay đổi trong mảng"></a>Phát hiện thay đổi trong mảng</h2><h3 id="Cac-phuong-thuc-bien-doi"><a href="#Cac-phuong-thuc-bien-doi" class="headerlink" title="Các phương thức biến đổi"></a>Các phương thức biến đổi</h3><p>Vue wrap các phương thức biến đổi (mutation method) của một mảng được quan sát (observe) để việc gọi phương thức này cũng sẽ kích hoạt thay đổi trên view. Các phương thức được wrap gồm có:</p>
 <ul>
 <li><code>push()</code></li>
 <li><code>pop()</code></li>
@@ -981,42 +985,41 @@ new Vue({
 <li><code>sort()</code></li>
 <li><code>reverse()</code></li>
 </ul>
-<p>You can open the console and play with the previous examples’ <code>items</code> array by calling their mutation methods. For example: <code>example1.items.push({ message: &#39;Baz&#39; })</code>.</p>
-<h3 id="Replacing-an-Array"><a href="#Replacing-an-Array" class="headerlink" title="Replacing an Array"></a>Replacing an Array</h3><p>Mutation methods, as the name suggests, mutate the original array they are called on. In comparison, there are also non-mutating methods, e.g. <code>filter()</code>, <code>concat()</code> and <code>slice()</code>, which do not mutate the original array but <strong>always return a new array</strong>. When working with non-mutating methods, you can replace the old array with the new one:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">example1.items = example1.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> item.message.match(<span class="regexp">/Foo/</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.</p>
-<h3 id="Caveats"><a href="#Caveats" class="headerlink" title="Caveats"></a>Caveats</h3><p>Due to limitations in JavaScript, Vue <strong>cannot</strong> detect the following changes to an array:</p>
+<p>Bạn có thể mở console và thử thay đổi mảng <code>items</code> trong các ví dụ trên đây bằng cách thực thi các phương thức biến đổi, ví dụ <code>example1.items.push({ name: &#39;Nước chanh&#39; })</code>.</p>
+<h3 id="Thay-the-mang"><a href="#Thay-the-mang" class="headerlink" title="Thay thế mảng"></a>Thay thế mảng</h3><p>Các phương thức biến đổi, như tên gọi cho thấy, <em>biến đổi</em> nội dung của mảng. Chúng ta cũng có những phương thức không biến đổi (non-mutating method) như <code>filter()</code>, <code>concat()</code>, <code>slice()</code>… Thay vì biến đổi nội dung của mảng gốc, các phương thức này <strong>luôn trả về một mảng mới</strong>. Khi làm việc với các phương thức này, bạn có thể thay mảng cũ bằng mảng mới:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">example1.items = example1.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> item.name.match(<span class="regexp">/à/</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Có thể bạn sẽ nghĩ là làm thế này Vue sẽ bỏ đi toàn bộ DOM có sẵn và render lại từ đầu, nhưng không phải thế. Vue thực hiện một số phỏng đoán thông minh để dùng lại DOM đến mức tối đa, vì thế thay thế một mảng bằng một mảng khác chứa các object chồng nhau là một cách làm rất hiệu quả.</p>
+<h3 id="Mot-so-diem-can-luu-y"><a href="#Mot-so-diem-can-luu-y" class="headerlink" title="Một số điểm cần lưu ý"></a>Một số điểm cần lưu ý</h3><p>Do một số hạn chế của JavaScript, Vue <strong>không thể</strong> phát hiện thấy những thay đổi sau đây đối với mảng:</p>
 <ol>
-<li>When you directly set an item with the index, e.g. <code>vm.items[indexOfItem] = newValue</code></li>
-<li>When you modify the length of the array, e.g. <code>vm.items.length = newLength</code></li>
+<li>Khi bạn gán một phần tử trực tiếp vào một index, ví dụ <code>vm.items[index] = newValue</code></li>
+<li>Khi bạn thay đổi kích thước của mảng, ví dụ <code>vm.items.length = newLength</code></li>
 </ol>
-<p>To overcome caveat 1, both of the following will accomplish the same as <code>vm.items[indexOfItem] = newValue</code>, but will also trigger state updates in the reactivity system:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Vue.set</span></div><div class="line">Vue.set(example1.items, indexOfItem, newValue)</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Array.prototype.splice</span></div><div class="line">example1.items.splice(indexOfItem, <span class="number">1</span>, newValue)</div></pre></td></tr></table></figure>
-<p>To deal with caveat 2, you can use <code>splice</code>:</p>
+<p>Để khắc phục điểm thứ nhất, bạn có thể dùng một trong hai cách sau đây. Cả hai cách đều đạ được kết quả như <code>vm.items[indexOfItem] = newValue</code>, nhưng đồng thời cũng kích hoạt cập nhật trạng thái trong hệ thống reactivity của Vue:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Vue.set</span></div><div class="line">Vue.set(example1.items, index, newValue)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Array.prototype.splice</span></div><div class="line">example1.items.splice(index, <span class="number">1</span>, newValue)</div></pre></td></tr></table></figure>
+<p>Để khắc phục điểm thứ hai, bạn có thể dùng <code>splice</code>:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">example1.items.splice(newLength)</div></pre></td></tr></table></figure>
-<h2 id="Object-Change-Detection-Caveats"><a href="#Object-Change-Detection-Caveats" class="headerlink" title="Object Change Detection Caveats"></a>Object Change Detection Caveats</h2><p>Again due to limitations of modern JavaScript, <strong>Vue cannot detect property addition or deletion</strong>. For example:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    a: <span class="number">1</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// `vm.a` is now reactive</span></div><div class="line"></div><div class="line">vm.b = <span class="number">2</span></div><div class="line"><span class="comment">// `vm.b` is NOT reactive</span></div></pre></td></tr></table></figure>
-<p>Vue does not allow dynamically adding new root-level reactive properties to an already created instance. However, it’s possible to add reactive properties to a nested object using the <code>Vue.set(object, key, value)</code> method. For example, given:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    userProfile: &#123;</div><div class="line">      name: <span class="string">'Anika'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>You could add a new <code>age</code> property to the nested <code>userProfile</code> object with:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.set(vm.userProfile, <span class="string">'age'</span>, <span class="number">27</span>)</div></pre></td></tr></table></figure>
-<p>You can also use the <code>vm.$set</code> instance method, which is an alias for the global <code>Vue.set</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.$set(<span class="keyword">this</span>.userProfile, <span class="string">'age'</span>, <span class="number">27</span>)</div></pre></td></tr></table></figure>
-<p>Sometimes you may want to assign a number of new properties to an existing object, for example using <code>Object.assign()</code> or <code>_.extend()</code>. In such cases, you should create a fresh object with properties from both objects. So instead of:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">Object</span>.assign(<span class="keyword">this</span>.userProfile, &#123;</div><div class="line">  age: <span class="number">27</span>,</div><div class="line">  favoriteColor: <span class="string">'Vue Green'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>You would add new, reactive properties with:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.userProfile = <span class="built_in">Object</span>.assign(&#123;&#125;, <span class="keyword">this</span>.userProfile, &#123;</div><div class="line">  age: <span class="number">27</span>,</div><div class="line">  favoriteColor: <span class="string">'Vue Green'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h2 id="Displaying-Filtered-Sorted-Results"><a href="#Displaying-Filtered-Sorted-Results" class="headerlink" title="Displaying Filtered/Sorted Results"></a>Displaying Filtered/Sorted Results</h2><p>Sometimes we want to display a filtered or sorted version of an array without actually mutating or resetting the original data. In this case, you can create a computed property that returns the filtered or sorted array.</p>
-<p>For example:</p>
+<h2 id="Luu-y-ve-phat-hien-thay-doi-trong-object"><a href="#Luu-y-ve-phat-hien-thay-doi-trong-object" class="headerlink" title="Lưu ý về phát hiện thay đổi trong object"></a>Lưu ý về phát hiện thay đổi trong object</h2><p>Một lần nữa, cũng do hạn chế của JavaScript, <strong>Vue không thể phát hiện việc thêm hay xóa thuộc tính của object</strong>. Ví dụ:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    a: <span class="number">1</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// `vm.a` reactive</span></div><div class="line"></div><div class="line">vm.b = <span class="number">2</span></div><div class="line"><span class="comment">// `vm.b` KHÔNG reactive</span></div></pre></td></tr></table></figure>
+<p>Vue không hỗ trợ việc thêm thuộc tính reactive ở cấp root cho một đối tượng Vue đã được khởi tạo. Tuy nhiên, chúng ta có thể thêm thuộc tính reactive vào một object con với phương thức <code>Vue.set(object, key, value)</code>. Ví dụ, nếu chúng ta có:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    userProfile: &#123;</div><div class="line">      name: <span class="string">'Bành Tổ'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Bạn có thể thêm một thuộc tính <code>age</code> vào object <code>userProfile</code> như sau:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.set(vm.userProfile, <span class="string">'age'</span>, <span class="number">800</span>)</div></pre></td></tr></table></figure>
+<p>Bạn cũng có thể dùng phương thức đối tượng (instance method) <code>vm.$set</code>, một alias cho phương thức toàn cục <code>Vue.set</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.$set(<span class="keyword">this</span>.userProfile, <span class="string">'age'</span>, <span class="number">800</span>)</div></pre></td></tr></table></figure>
+<p>Đôi khi bạn cũng muốn thêm vài thuộc tính cùng lúc vào một object có sẵn, sử dụng <code>Object.assign()</code> hoặc <code>_.extend()</code>. Trong những trường hợp này, nên tạo một object mới với các thuộc tính từ hai object kia. Có nghĩa là thay vì:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">Object</span>.assign(<span class="keyword">this</span>.userProfile, &#123;</div><div class="line">  age: <span class="number">800</span>,</div><div class="line">  favoriteColor: <span class="string">'Tím mộng mơ'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>bạn sẽ thêm thuộc tính reactive mới bằng như sau:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.userProfile = <span class="built_in">Object</span>.assign(&#123;&#125;, <span class="keyword">this</span>.userProfile, &#123;</div><div class="line">  age: <span class="number">800</span>,</div><div class="line">  favoriteColor: <span class="string">'Tím mộng mơ'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="Hien-thi-ket-qua-da-duoc-loc-hoac-sap-xep"><a href="#Hien-thi-ket-qua-da-duoc-loc-hoac-sap-xep" class="headerlink" title="Hiển thị kết quả đã được lọc hoặc sắp xếp"></a>Hiển thị kết quả đã được lọc hoặc sắp xếp</h2><p>Đôi khi chúng ta muốn hiển thị một phiên bản đã được lọc (filter) hoặc sắp xếp (sort) của một mảng mà không thay đổi mảng đó. Trong trường hợp này, bạn có thể tạo một computed property trả về mảng đã được lọc hoặc sắp xếp. Ví dụ:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"n in evenNumbers"</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  numbers: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line">computed: &#123;</div><div class="line">  evenNumbers: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>In situations where computed properties are not feasible (e.g. inside nested <code>v-for</code> loops), you can use a method:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  numbers: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line"></div><div class="line">computed: &#123;</div><div class="line">  evenNumbers: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Trong trường hợp không dùng được computed property (ví dụ trong các vòng lặp <code>v-for</code>), ta có thể dùng một phương thức:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"n in even(numbers)"</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  numbers: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line">methods: &#123;</div><div class="line">  even: <span class="function"><span class="keyword">function</span> (<span class="params">numbers</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="v-for-with-a-Range"><a href="#v-for-with-a-Range" class="headerlink" title="v-for with a Range"></a><code>v-for</code> with a Range</h2><p><code>v-for</code> can also take an integer. In this case it will repeat the template that many times.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  numbers: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line"></div><div class="line">methods: &#123;</div><div class="line">  even: <span class="function"><span class="keyword">function</span> (<span class="params">numbers</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="v-for-dung-voi-mot-day"><a href="#v-for-dung-voi-mot-day" class="headerlink" title="v-for dùng với một dãy"></a><code>v-for</code> dùng với một dãy</h2><p><code>v-for</code> cũng có thể nhận một số nguyên <code>n</code>. Trong trường hợp này, template sẽ được lặp lại <code>n</code> lần:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-for</span>=<span class="string">"n in 10"</span>&gt;</span>&#123;&#123; n &#125;&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<p>Kết quả</p>
 
 <div id="range" class="demo">
   <span v-for="n in 10">{{ n }} </span>
@@ -1025,32 +1028,33 @@ new Vue({
   new Vue({ el: '#range' })
 </script>
 
-<h2 id="v-for-on-a-lt-template-gt"><a href="#v-for-on-a-lt-template-gt" class="headerlink" title="v-for on a &lt;template&gt;"></a><code>v-for</code> on a <code>&lt;template&gt;</code></h2><p>Similar to template <code>v-if</code>, you can also use a <code>&lt;template&gt;</code> tag with <code>v-for</code> to render a block of multiple elements. For example:</p>
+<h2 id="v-for-dung-voi-the-lt-template-gt"><a href="#v-for-dung-voi-the-lt-template-gt" class="headerlink" title="v-for dùng với thẻ &lt;template&gt;"></a><code>v-for</code> dùng với thẻ <code>&lt;template&gt;</code></h2><p>Tương tự với <code>v-if</code>, bạn có thể dùng <code>v-for</code> trên một thẻ <code>&lt;template&gt;</code> để render một lúc nhiều phần tử. Ví dụ:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; item.msg &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="v-for-with-v-if"><a href="#v-for-with-v-if" class="headerlink" title="v-for with v-if"></a><code>v-for</code> with <code>v-if</code></h2><p>When they exist on the same node, <code>v-for</code> has a higher priority than <code>v-if</code>. That means the <code>v-if</code> will be run on each iteration of the loop separately. This can be useful when you want to render nodes for only <em>some</em> items, like below:</p>
+<h2 id="v-for-dung-voi-v-if"><a href="#v-for-dung-voi-v-if" class="headerlink" title="v-for dùng với v-if"></a><code>v-for</code> dùng với <code>v-if</code></h2><p>Khi được dùng trên dùng một node, <code>v-for</code> có độ ưu tiên cao hơn <code>v-if</code>, có nghĩa là <code>v-if</code> sẽ được thực thi một cách riêng biệt trên mỗi vòng lặp của <code>v-for</code>. Điều này có thể có ích khi bạn muốn render cho chỉ <em>một số</em> item, như trong ví dụ sau:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span> <span class="attr">v-if</span>=<span class="string">"!todo.isComplete"</span>&gt;</span></div><div class="line">  &#123;&#123; todo &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>The above only renders the todos that are not complete.</p>
-<p>If instead, your intent is to conditionally skip execution of the loop, you can place the <code>v-if</code> on a wrapper element (or <a href="conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt"><code>&lt;template&gt;</code></a>). For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">v-if</span>=<span class="string">"todos.length"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">    &#123;&#123; todo &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span>&gt;</span>No todos left!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="v-for-with-a-Component"><a href="#v-for-with-a-Component" class="headerlink" title="v-for with a Component"></a><code>v-for</code> with a Component</h2><blockquote>
-<p>This section assumes knowledge of <a href="components.html">Components</a>. Feel free to skip it and come back later.</p>
+<p>Ví dụ trên sẽ chỉ render những todo chưa hoàn thành.</p>
+<p>Ngược lại, nếu bạn muốn bỏ qua việc thực thi vòng lặp <code>v-for</code> theo điều kiện, hãy dùng <code>v-if</code> trên một phần tử wrapper (hoặc <a href="conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt"><code>&lt;template&gt;</code></a>). Ví dụ:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">v-if</span>=<span class="string">"todos.length"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">    &#123;&#123; todo &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span>&gt;</span>Mọi việc đã hoàn thành.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="v-for-dung-voi-component"><a href="#v-for-dung-voi-component" class="headerlink" title="v-for dùng với component"></a><code>v-for</code> dùng với component</h2><blockquote>
+<p>Phần này giả định rằng bạn đã có kiến thức về <a href="components.html">Components</a>. Nếu chưa, bạn có thể bỏ qua và quay lại sau.</p>
 </blockquote>
-<p>You can directly use <code>v-for</code> on a custom component, like any normal element:</p>
+<p>Bạn có thể dùng <code>v-for</code> trực tiếp trên một component như một phần tử bình thường:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>In 2.2.0+, when using <code>v-for</code> with a component, a <a href="list.html#key"><code>key</code></a> is now required.</p>
+<p>Từ bản 2.2.0 trở đi, thuộc tính <a href="list.html#key"><code>key</code></a> là bắt buộc khi dùng <code>v-for</code> với một component,</p>
 </blockquote>
-<p>However, this won’t automatically pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:</p>
+<p>Tuy nhiên trong ví dụ trên, dữ liệu sẽ không được tự động truyền vào component, vì mỗi commponent có scope (phạm vi) độc lập. Để truyền dữ liệu trên mỗi vòng lặp vào component, chúng ta dùng thêm <code>props</code>:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span></span></div><div class="line"><span class="tag">  <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:item</span>=<span class="string">"item"</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:index</span>=<span class="string">"index"</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:key</span>=<span class="string">"item.id"</span></span></div><div class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>The reason for not automatically injecting <code>item</code> into the component is because that makes the component tightly coupled to how <code>v-for</code> works. Being explicit about where its data comes from makes the component reusable in other situations.</p>
-<p>Here’s a complete example of a simple todo list:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"todo-list-example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span></span></div><div class="line"><span class="tag">    <span class="attr">v-model</span>=<span class="string">"newTodoText"</span></span></div><div class="line"><span class="tag">    <span class="attr">v-on:keyup.enter</span>=<span class="string">"addNewTodo"</span></span></div><div class="line"><span class="tag">    <span class="attr">placeholder</span>=<span class="string">"Add a todo"</span></span></div><div class="line"><span class="tag">  &gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span></span></div><div class="line"><span class="tag">      <span class="attr">is</span>=<span class="string">"todo-item"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(todo, index) in todos"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-bind:key</span>=<span class="string">"todo.id"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-bind:title</span>=<span class="string">"todo.title"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-on:remove</span>=<span class="string">"todos.splice(index, 1)"</span></span></div><div class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p class="tip">Note the <code>is=&quot;todo-item&quot;</code> attribute. This is necessary in DOM templates, because only an <code>&lt;li&gt;</code> element is valid inside a <code>&lt;ul&gt;</code>. It does the same thing as <code>&lt;todo-item&gt;</code>, but works around a potential browser parsing error. See <a href="components.html#DOM-Template-Parsing-Caveats">DOM Template Parsing Caveats</a> to learn more.</p>
+<p>Lí do <code>item</code> không được truyền tự động vào component là bởi vì nếu làm vậy component sẽ bị gắn chặt vào <code>v-for</code>. Bằng cách bắt buộc khai báo nguồn dữ liệu một cách minh bạch (explicit), chúng ta có thể sử dụng lại component trong các tình huống khác.</p>
+<p>Dưới đây là một ví dụ hoàn chỉnh của một ứng dụng todo:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"todo-list-example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span></span></div><div class="line"><span class="tag">    <span class="attr">v-model</span>=<span class="string">"newTodoText"</span></span></div><div class="line"><span class="tag">    <span class="attr">v-on:keyup.enter</span>=<span class="string">"addNewTodo"</span></span></div><div class="line"><span class="tag">    <span class="attr">placeholder</span>=<span class="string">"Thêm việc cần làm"</span></span></div><div class="line"><span class="tag">  &gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span></span></div><div class="line"><span class="tag">      <span class="attr">is</span>=<span class="string">"todo-item"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(todo, index) in todos"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-bind:key</span>=<span class="string">"todo.id"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-bind:title</span>=<span class="string">"todo.title"</span></span></div><div class="line"><span class="tag">      <span class="attr">v-on:remove</span>=<span class="string">"todos.splice(index, 1)"</span></span></div><div class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p class="tip">Lưu ý thuộc tính <code>is=&quot;todo-item&quot;</code>. Điều này là cần thiết trong DOM template, vì chỉ có thẻ <code>&lt;li&gt;</code> là hợp lệ trong <code>&lt;ul&gt;</code>. Cách khai báo <code>&lt;li is=&quot;todo-item&quot;&gt;</code> có cùng kết quả như <code>&lt;todo-item&gt;</code>, nhưng tránh được lỗi có thể xảy trình duyệt parse (phân tích) template. Xem thêm <a href="components.html#DOM-Template-Parsing-Caveats">Lưu ý về parsing DOM template</a>.</p>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  template: <span class="string">'\</span></div><div class="line"><span class="string">    &lt;li&gt;\</span></div><div class="line"><span class="string">      &#123;&#123; title &#125;&#125;\</span></div><div class="line"><span class="string">      &lt;button v-on:click="$emit(\'remove\')"&gt;X&lt;/button&gt;\</span></div><div class="line"><span class="string">    &lt;/li&gt;\</span></div><div class="line"><span class="string">  '</span>,</div><div class="line">  props: [<span class="string">'title'</span>]</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#todo-list-example'</span>,</div><div class="line">  data: &#123;</div><div class="line">    newTodoText: <span class="string">''</span>,</div><div class="line">    todos: [</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">1</span>,</div><div class="line">        title: <span class="string">'Do the dishes'</span>,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">2</span>,</div><div class="line">        title: <span class="string">'Take out the trash'</span>,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">3</span>,</div><div class="line">        title: <span class="string">'Mow the lawn'</span></div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    nextTodoId: <span class="number">4</span></div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    addNewTodo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.todos.push(&#123;</div><div class="line">        id: <span class="keyword">this</span>.nextTodoId++,</div><div class="line">        title: <span class="keyword">this</span>.newTodoText</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">this</span>.newTodoText = <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  template: <span class="string">'\</span></div><div class="line"><span class="string">    &lt;li&gt;\</span></div><div class="line"><span class="string">      &#123;&#123; title &#125;&#125;\</span></div><div class="line"><span class="string">      &lt;button v-on:click="$emit(\'remove\')"&gt;X&lt;/button&gt;\</span></div><div class="line"><span class="string">    &lt;/li&gt;\</span></div><div class="line"><span class="string">  '</span>,</div><div class="line">  props: [<span class="string">'title'</span>]</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#todo-list-example'</span>,</div><div class="line">  data: &#123;</div><div class="line">    newTodoText: <span class="string">''</span>,</div><div class="line">    todos: [</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">1</span>,</div><div class="line">        title: <span class="string">'luộc khoai'</span>,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">2</span>,</div><div class="line">        title: <span class="string">'cùng chị giã gạo'</span>,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">3</span>,</div><div class="line">        title: <span class="string">'thổi cơm'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        id: <span class="number">4</span>,</div><div class="line">        title: <span class="string">'nhổ cỏ vườn'</span></div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    nextTodoId: <span class="number">5</span></div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    addNewTodo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.todos.push(&#123;</div><div class="line">        id: <span class="keyword">this</span>.nextTodoId++,</div><div class="line">        title: <span class="keyword">this</span>.newTodoText</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">this</span>.newTodoText = <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 
 <div id="todo-list-example" class="demo">
-  <input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo">
+  <p>Khi mẹ vắng nhà, em:</p>
+  <input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Thêm việc cần làm">
   <ul>
     <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
   </ul>
@@ -1073,18 +1077,22 @@ new Vue({
     todos: [
       {
         id: 1,
-        title: 'Do the dishes',
+        title: 'luộc khoai',
       },
       {
         id: 2,
-        title: 'Take out the trash',
+        title: 'cùng chị giã gạo',
       },
       {
         id: 3,
-        title: 'Mow the lawn'
+        title: 'thổi cơm'
+      },
+      {
+        id: 4,
+        title: 'nhổ cỏ vườn'
       }
     ],
-    nextTodoId: 4
+    nextTodoId: 5
   },
   methods: {
     addNewTodo: function () {
