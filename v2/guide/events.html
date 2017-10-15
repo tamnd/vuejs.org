@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>Event Handling — Vue.js</title>
+    <title>Xử lí sự kiện — Vue.js</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - Framework JavaScript linh động">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -17,12 +17,12 @@
     <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/events.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Event Handling — Vue.js">
+    <meta property="og:title" content="Xử lí sự kiện — Vue.js">
     <meta property="og:description" content="Vue.js - Framework JavaScript linh động">
     <meta property="og:image" content="https://vi.vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Event Handling — Vue.js">
+    <meta name="twitter:title" content="Xử lí sự kiện — Vue.js">
     <meta name="twitter:description" content="Vue.js - Framework JavaScript linh động">
     <meta name="twitter:image" content="https://vi.vuejs.org/images/logo.png">
 
@@ -428,7 +428,7 @@
     
     
     <li>
-      <a href="/v2/guide/events.html" class="sidebar-link current">Event Handling</a>
+      <a href="/v2/guide/events.html" class="sidebar-link current">Xử lí sự kiện</a>
     </li>
   
     
@@ -839,17 +839,16 @@
     
   
   
-    <h1>Event Handling</h1>
+    <h1>Xử lí sự kiện</h1>
   
-  <h2 id="Listening-to-Events"><a href="#Listening-to-Events" class="headerlink" title="Listening to Events"></a>Listening to Events</h2><p>We can use the <code>v-on</code> directive to listen to DOM events and run some JavaScript when they’re triggered.</p>
-<p>For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"counter += 1"</span>&gt;</span>Add 1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>The button above has been clicked &#123;&#123; counter &#125;&#125; times.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+  <h2 id="Lang-nghe-su-kien"><a href="#Lang-nghe-su-kien" class="headerlink" title="Lắng nghe sự kiện"></a>Lắng nghe sự kiện</h2><p>Chúng ta có thể dùng directive <code>v-on</code> để lắng nghe các sự kiện DOM và thực thi JavaScript khi những sự kiện này được kích hoạt. Ví dụ:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"counter += 1"</span>&gt;</span>Đếm cừu<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; counter &#125;&#125; con cừu.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example1 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-1'</span>,</div><div class="line">  data: &#123;</div><div class="line">    counter: <span class="number">0</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Result:</p>
+<p>Kết quả:</p>
 
 <div id="example-1" class="demo">
-  <button v-on:click="counter += 1">Add 1</button>
-  <p>The button above has been clicked {{ counter }} times.</p>
+  <button v-on:click="counter += 1">Đếm cừu</button>
+  <p>{{ counter }} con cừu.</p>
 </div>
 <script>
 var example1 = new Vue({
@@ -860,14 +859,14 @@ var example1 = new Vue({
 })
 </script>
 
-<h2 id="Method-Event-Handlers"><a href="#Method-Event-Handlers" class="headerlink" title="Method Event Handlers"></a>Method Event Handlers</h2><p>The logic for many event handlers will be more complex though, so keeping your JavaScript in the value of the <code>v-on</code> attribute isn’t feasible. That’s why <code>v-on</code> can also accept the name of a method you’d like to call.</p>
-<p>For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- `greet` is the name of a method defined below --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"greet"</span>&gt;</span>Greet<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-2'</span>,</div><div class="line">  data: &#123;</div><div class="line">    name: <span class="string">'Vue.js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// define methods under the `methods` object</span></div><div class="line">  methods: &#123;</div><div class="line">    greet: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="comment">// `this` inside methods points to the Vue instance</span></div><div class="line">      alert(<span class="string">'Hello '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>)</div><div class="line">      <span class="comment">// `event` is the native DOM event</span></div><div class="line">      <span class="keyword">if</span> (event) &#123;</div><div class="line">        alert(event.target.tagName)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// you can invoke methods in JavaScript too</span></div><div class="line">example2.greet() <span class="comment">// =&gt; 'Hello Vue.js!'</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<h2 id="Phuong-thuc-xu-li-su-kien"><a href="#Phuong-thuc-xu-li-su-kien" class="headerlink" title="Phương thức xử lí sự kiện"></a>Phương thức xử lí sự kiện</h2><p>Trong thực tế, logic để xử lí sự kiện thường phức tạp hơn, vì thế chứa JavaScript trực tiếp trong giá trị của thuộc tính <code>v-on</code> như trên là không khả thi. Đó là lí do <code>v-on</code> cũng có thể nhận tên của một phương thức mà bạn muốn gọi. Ví dụ:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- `greet` là tên của phương thức bạn muốn gọi --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"greet"</span>&gt;</span>Chào mừng<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> example2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-2'</span>,</div><div class="line">  data: &#123;</div><div class="line">    name: <span class="string">'Vue.js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// định nghĩa phương thức trong object `methods`</span></div><div class="line">  methods: &#123;</div><div class="line">    greet: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="comment">// bên trong một phương thức, `this` trỏ đến đối tượng Vue</span></div><div class="line">      alert(<span class="string">'Xin chào '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>)</div><div class="line">      <span class="comment">// `event` là sự kiện DOM native</span></div><div class="line">      <span class="keyword">if</span> (event) &#123;</div><div class="line">        alert(event.target.tagName)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// bạn cũng có thể gọi phương thức từ JavaScript</span></div><div class="line">example2.greet() <span class="comment">// =&gt; 'Xin chào Vue.js!'</span></div></pre></td></tr></table></figure>
+<p>Kết quả:</p>
 
 <div id="example-2" class="demo">
-  <button v-on:click="greet">Greet</button>
+  <!-- `greet` là tên của phương thức bạn muốn gọi -->
+  <button v-on:click="greet">Chào mừng</button>
 </div>
 <script>
 var example2 = new Vue({
@@ -875,9 +874,12 @@ var example2 = new Vue({
   data: {
     name: 'Vue.js'
   },
+  // định nghĩa phương thức trong object `methods`
   methods: {
     greet: function (event) {
-      alert('Hello ' + this.name + '!')
+      // bên trong một phương thức, `this` trỏ đến đối tượng Vue
+      alert('Xin chào ' + this.name + '!')
+      // `event` là sự kiện DOM native
       if (event) {
         alert(event.target.tagName)
       }
@@ -886,13 +888,14 @@ var example2 = new Vue({
 })
 </script>
 
-<h2 id="Methods-in-Inline-Handlers"><a href="#Methods-in-Inline-Handlers" class="headerlink" title="Methods in Inline Handlers"></a>Methods in Inline Handlers</h2><p>Instead of binding directly to a method name, we can also use methods in an inline JavaScript statement:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-3"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"say('hi')"</span>&gt;</span>Say hi<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"say('what')"</span>&gt;</span>Say what<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Goi-phuong-thuc-inline"><a href="#Goi-phuong-thuc-inline" class="headerlink" title="Gọi phương thức inline"></a>Gọi phương thức inline</h2><p>Thay vì bind trực tiếp tên phương thức, ta cũng có thể gọi phương thức trong một câu lệnh JavaScript:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-3"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"say('Konica')"</span>&gt;</span>Hãy nói Konica<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"say('Viettel')"</span>&gt;</span>Hãy nói theo cách của bạn<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-3'</span>,</div><div class="line">  methods: &#123;</div><div class="line">    say: <span class="function"><span class="keyword">function</span> (<span class="params">message</span>) </span>&#123;</div><div class="line">      alert(message)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Result:<br>
+<p>Kết quả:</p>
+
 <div id="example-3" class="demo">
-  <button v-on:click="say('hi')">Say hi</button>
-  <button v-on:click="say('what')">Say what</button>
+  <button v-on:click="say('Konica')">Hãy nói Konica</button>
+  <button v-on:click="say('Viettel')">Hãy nói theo cách của bạn</button>
 </div>
 <script>
 new Vue({
@@ -904,12 +907,12 @@ new Vue({
   }
 })
 </script>
-</p>
-<p>Sometimes we also need to access the original DOM event in an inline statement handler. You can pass it into a method using the special <code>$event</code> variable:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"warn('Form cannot be submitted yet.', $event)"</span>&gt;</span></div><div class="line">  Submit</div><div class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// ...</span></div><div class="line">methods: &#123;</div><div class="line">  warn: <span class="function"><span class="keyword">function</span> (<span class="params">message, event</span>) </span>&#123;</div><div class="line">    <span class="comment">// now we have access to the native event</span></div><div class="line">    <span class="keyword">if</span> (event) event.preventDefault()</div><div class="line">    alert(message)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Event-Modifiers"><a href="#Event-Modifiers" class="headerlink" title="Event Modifiers"></a>Event Modifiers</h2><p>It is a very common need to call <code>event.preventDefault()</code> or <code>event.stopPropagation()</code> inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.</p>
-<p>To address this problem, Vue provides <strong>event modifiers</strong> for <code>v-on</code>. Recall that modifiers are directive postfixes denoted by a dot.</p>
+
+<p>Đôi khi chúng ta cũng muốn truy xuất đến sự kiện DOM ban đầu từ câu lệnh JavaScript inline. Bạn có thể truyền sự kiện DOM vào phương thức thông qua biến <code>$event</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"warn('Chưa submit được form.', $event)"</span>&gt;</span></div><div class="line">  Submit</div><div class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// ...</span></div><div class="line">methods: &#123;</div><div class="line">  warn: <span class="function"><span class="keyword">function</span> (<span class="params">message, event</span>) </span>&#123;</div><div class="line">    <span class="comment">// bây giờ chúng ta có thể truy xuất đến sự kiện DOM native</span></div><div class="line">    <span class="keyword">if</span> (event) event.preventDefault()</div><div class="line">    alert(message)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Event-modifier"><a href="#Event-modifier" class="headerlink" title="Event modifier"></a>Event modifier</h2><p>Trong rất nhiều trường hợp, chúng ta cần gọi <code>event.preventDefault()</code> hoặc <code>event.stopPropagation()</code> bên trong một phương thức xử lí sự kiện. Tuy việc này không có gì khó, sẽ tốt hơn nếu các phương thức chỉ phải tập trung giải quyết logic dữ liệu thay vì cáng đáng các sự kiện DOM.</p>
+<p>Để giải quyết vấn đề này, Vue cung cấp các <strong>event modifier</strong> cho <code>v-on</code>. <code>Event modfier</code> là một hậu tố (postfix) cho directive, được biểu thị bằng một dấu chấm.</p>
 <ul>
 <li><code>.stop</code></li>
 <li><code>.prevent</code></li>
@@ -917,23 +920,23 @@ new Vue({
 <li><code>.self</code></li>
 <li><code>.once</code></li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- the click event's propagation will be stopped --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.stop</span>=<span class="string">"doThis"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- the submit event will no longer reload the page --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"onSubmit"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- modifiers can be chained --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.stop.prevent</span>=<span class="string">"doThat"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- just the modifier --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- use capture mode when adding the event listener --&gt;</span></div><div class="line"><span class="comment">&lt;!-- i.e. an event targeting an inner element is handled here before being handled by that element --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-on:click.capture</span>=<span class="string">"doThis"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- only trigger handler if event.target is the element itself --&gt;</span></div><div class="line"><span class="comment">&lt;!-- i.e. not from a child element --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-on:click.self</span>=<span class="string">"doThat"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p class="tip">Order matters when using modifiers because the relevant code is generated in the same order. Therefore using <code>@click.prevent.self</code> will prevent <strong>all clicks</strong> while <code>@click.self.prevent</code> will only prevent clicks on the element itself.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  sự kiện click sẽ không được propagate (lan truyền) </span></div><div class="line"><span class="comment">  điều này tương đương với event.stopPropagation()</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.stop</span>=<span class="string">"doThis"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  sự kiện submit sẽ không reload trang </span></div><div class="line"><span class="comment">  điều này tương đương với event.preventDefault()</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"onSubmit"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- ta có thể nối modifier với nhau --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.stop.prevent</span>=<span class="string">"doThat"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- chỉ có modifier, không có phương thức xử lí --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  dùng "capture mode" khi thêm event listener</span></div><div class="line"><span class="comment">  nghĩa là một sự kiện xảy ra với một phần tử bên trong sẽ được xủ lí ở đây </span></div><div class="line"><span class="comment">  trước khi được xử lí bởi phần tử đó</span></div><div class="line"><span class="comment">  đọc thêm về event capturing: https://javascript.info/bubbling-and-capturing#capturing</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-on:click.capture</span>=<span class="string">"doThis"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  chỉ kích hoạt phương thức xử lí nếu event.target là chính phần tử được click,</span></div><div class="line"><span class="comment">  chứ không phải là một phần tử con</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-on:click.self</span>=<span class="string">"doThat"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p class="tip">Khi sử dụng nhiều modifier cùng lúc, thứ tự nối là rất quan trọng, vì code sẽ được tạo ra theo đúng thứ tự đó. Ví dụ, <code>@click.prevent.self</code> sẽ ngăn <strong>toàn bộ click</strong> còn <code>@click.self.prevent</code> chỉ ngăn các click trên chính phần tử đang được nhắc đến.</p>
 
 <blockquote>
-<p>New in 2.1.4+</p>
+<p>Từ phiên bản 2.1.4 trở đi</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- the click event will be triggered at most once --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.once</span>=<span class="string">"doThis"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Unlike the other modifiers, which are exclusive to native DOM events, the <code>.once</code> modifier can also be used on <a href="components.html#Using-v-on-with-Custom-Events">component events</a>. If you haven’t read about components yet, don’t worry about this for now.</p>
-<h2 id="Key-Modifiers"><a href="#Key-Modifiers" class="headerlink" title="Key Modifiers"></a>Key Modifiers</h2><p>When listening for keyboard events, we often need to check for common key codes. Vue also allows adding key modifiers for <code>v-on</code> when listening for key events:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- only call vm.submit() when the keyCode is 13 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.13</span>=<span class="string">"submit"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Remembering all the keyCodes is a hassle, so Vue provides aliases for the most commonly used keys:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- same as above --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">"submit"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- also works for shorthand --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.enter</span>=<span class="string">"submit"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Here’s the full list of key modifier aliases:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- sự kiện click sẽ chỉ được kích hoạt tối đa một lần --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.once</span>=<span class="string">"donateKidney"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Không như các modifier khác, vốn chỉ dùng được cho các sự kiện DOM native, modifier <code>.once</code> cũng có thể dùng cho các <a href="components.html#Using-v-on-with-Custom-Events">sự kiện component</a>. Nếu bạn chưa đọc về component, có thể bỏ qua và quay lại sau.</p>
+<h2 id="Key-modifier"><a href="#Key-modifier" class="headerlink" title="Key modifier"></a>Key modifier</h2><p>Khi lắng nghe các sự kiện bàn phím (keyboard event), chúng ta thường phải kiểm tra mã phím (key code). Vue hỗ trợ thêm key modifier (modifer cho mã phím) cho <code>v-on</code> trong các trường hợp này:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- chỉ gọi vm.submit() khi keyCode là 13 (phím Enter) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.13</span>=<span class="string">"submit"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Tất nhiên nếu phải nhớ toàn bộ các mã phím thì rất mệt mỏi, nên Vue cung cấp alias (bí danh) cho các phím thông dụng nhất:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- như trên --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">"submit"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- cũng hoạt động với cách viết tắt của v-on --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.enter</span>=<span class="string">"submit"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Sau đây là danh sách đầy đủ của các key modifier:</p>
 <ul>
 <li><code>.enter</code></li>
 <li><code>.tab</code></li>
-<li><code>.delete</code> (captures both “Delete” and “Backspace” keys)</li>
+<li><code>.delete</code> (dùng cho cả hai phím “Delete” và “←”)</li>
 <li><code>.esc</code></li>
 <li><code>.space</code></li>
 <li><code>.up</code></li>
@@ -941,12 +944,12 @@ new Vue({
 <li><code>.left</code></li>
 <li><code>.right</code></li>
 </ul>
-<p>You can also <a href="../api/#keyCodes">define custom key modifier aliases</a> via the global <code>config.keyCodes</code> object:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// enable v-on:keyup.f1</span></div><div class="line">Vue.config.keyCodes.f1 = <span class="number">112</span></div></pre></td></tr></table></figure>
-<h2 id="Modifier-Keys"><a href="#Modifier-Keys" class="headerlink" title="Modifier Keys"></a>Modifier Keys</h2><blockquote>
-<p>New in 2.1.0</p>
+<p>Bạn cũng có thể <a href="../api/#keyCodes">tự định nghĩa alias cho key modifier</a> bằng object toàn cục <code>config.keyCodes</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// cho phép sử dụng v-on:keyup.f1</span></div><div class="line">Vue.config.keyCodes.f1 = <span class="number">112</span></div></pre></td></tr></table></figure>
+<h2 id="Cac-phim-modifier"><a href="#Cac-phim-modifier" class="headerlink" title="Các phím modifier"></a>Các phím modifier</h2><blockquote>
+<p>Từ phiên bản 2.1.0 trở đi</p>
 </blockquote>
-<p>You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:</p>
+<p>Bạn có thể sử dụng các modifier sau để chỉ kích hoạt các event listener khi các phím modifier tương ứng được nhấn:</p>
 <ul>
 <li><code>.ctrl</code></li>
 <li><code>.alt</code></li>
@@ -954,28 +957,28 @@ new Vue({
 <li><code>.meta</code></li>
 </ul>
 <blockquote>
-<p>Note: On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.</p>
+<p>Trên các bàn phím của hệ Macintosh, meta là phím Command (⌘). Trên bàn phím Windows, meta là phím Windows (⊞). Trên bàn phím Sun Microsystems, meta được đánh dấu bằng một hình thoi (◆). Trên một số loại bàn phím nhất định như bàn phím của MIT và Lisp, meta có nhãn “META”. Trên bàn phím Symbolics, meta có nhãn “META” hoặc “Meta”.</p>
 </blockquote>
-<p>For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Alt + C --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string">"clear"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Ctrl + Click --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string">"doSomething"</span>&gt;</span>Do something<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p class="tip">Note that modifier keys are different from regular keys and when used with <code>keyup</code> events, they have to be pressed when the event is emitted. In other words, <code>keyup.ctrl</code> will only trigger if you release a key while holding down <code>ctrl</code>. It won’t trigger if you release the <code>ctrl</code> key alone.</p>
+<p>Ví dụ:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Alt + C --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string">"clear"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Cmd + Click --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.meta</span>=<span class="string">"openNewTab"</span>&gt;</span>Mở tab mới<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p class="tip">Các phím modifier có cách hoạt động khác với phím thông thường, và khi dùng với sự kiện <code>keyup</code>, phím modifier phải được nhấn khi sự kiện được phát ra. Nói một cách khác, <code>keyup.ctrl</code> sẽ chỉ được kích hoạt khi bạn thả một phím khi vẫn đang ấn phím <code>ctrl</code>. Sự kiện này sẽ không được kích hoạt nếu bạn chỉ thả một mình phím <code>ctrl</code>.</p>
 
-<h3 id="Mouse-Button-Modifiers"><a href="#Mouse-Button-Modifiers" class="headerlink" title="Mouse Button Modifiers"></a>Mouse Button Modifiers</h3><blockquote>
-<p>New in 2.2.0+</p>
+<h3 id="Modifier-cho-phim-chuot"><a href="#Modifier-cho-phim-chuot" class="headerlink" title="Modifier cho phím chuột"></a>Modifier cho phím chuột</h3><blockquote>
+<p>Từ phiên bản 2.2.0 trở đi</p>
 </blockquote>
 <ul>
 <li><code>.left</code></li>
 <li><code>.right</code></li>
 <li><code>.middle</code></li>
 </ul>
-<p>These modifiers restrict the handler to events triggered by a specific mouse button.</p>
-<h2 id="Why-Listeners-in-HTML"><a href="#Why-Listeners-in-HTML" class="headerlink" title="Why Listeners in HTML?"></a>Why Listeners in HTML?</h2><p>You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty. In fact, there are several benefits in using <code>v-on</code>:</p>
+<p>Những modifier này giới hạn xử lí cho những sự kiện được kích hoạt bởi một phím chuột nhất định (trái, phải, hoặc giữa).</p>
+<h2 id="Tai-sao-lai-lang-nghe-su-kien-trong-HTML"><a href="#Tai-sao-lai-lang-nghe-su-kien-trong-HTML" class="headerlink" title="Tại sao lại lắng nghe sự kiện trong HTML?"></a>Tại sao lại lắng nghe sự kiện trong HTML?</h2><p>Bạn có thể lo ngại rằng toàn bộ việc lắng nghe sự kiện bằng cách đặt event listener trong HTML như thế này là vi phạm quy tắc “<a href="https://en.wikipedia.org/wiki/Separation_of_concerns" target="_blank" rel="external">separation of concerns</a>.” Cứ yên tâm, vì tất cả các hàm và biểu thức xử lí sự kiện của Vue được ràng buộc chặt chẽ với ViewModel, sẽ không có khó khăn gì trong việc bảo trì. Thật ra, sử dụng <code>v-on</code> còn có những lợi ích sau:</p>
 <ol>
-<li><p>It’s easier to locate the handler function implementations within your JS code by skimming the HTML template.</p>
+<li><p>Giúp định vị hàm xử lí trong code JavaScript được dễ dàng hơn bằng cách đọc lướt template HTML.</p>
 </li>
-<li><p>Since you don’t have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.</p>
+<li><p>Vì không phải attach hàm xử lí sự kiện trong JavaScript một cách thủ công, code trong ViewModel trở nên thuần logic và không phụ thuộc vào DOM. Điều này giúp chúng ta dễ viết test.</p>
 </li>
-<li><p>When a ViewModel is destroyed, all event listeners are automatically removed. You don’t need to worry about cleaning it up yourself.</p>
+<li><p>Khi một ViewModel bị hủy, tất cả hàm xử lí sự kiện đính kèm cũng được tự động gỡ bỏ mà không cần bạn phải dọn dẹp.</p>
 </li>
 </ol>
 
