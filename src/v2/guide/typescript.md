@@ -16,6 +16,7 @@ Một hệ thống kiểu tĩnh có thể giúp phát hiện được nhiều l�
 
 Vì các gói được phát hành trên NPM](), và phiên bản mới nhất của Typescript hiểu dược các khai báo kiểu trong các gói NPM, nên khi cài đặt Vue bằng NPM, bạn không cần phải cài thêm bất kì thứ gì khác để có thể sử dụng Typescript với Vue.
 
+## Cấu hình đề xuất
 ## Recommended Configuration
 
 ``` js
@@ -33,21 +34,21 @@ Vì các gói được phát hành trên NPM](), và phiên bản mới nhất c
 }
 ```
 
-Note the `allowSyntheticDefaultImports` option allows us to use the following:
+Chú ý tuỳ chọn `allowSyntheticDefaultImports` cho phép sử dụng những điều sau:
 
 ``` js
 import Vue from 'vue'
 ```
 
-instead of:
+thay vì:
 
 ``` js
 import Vue = require('vue')
 ```
 
-The former (ES module syntax) is recommended because it is consistent with recommended plain ES usage, and in the future we are planning to move all official declarations to use ES-style exports.
+Cú pháp module kiểu ES được khuyến cáo vì nó phù hợp với cách sử dụng ES, và trong tương lai, chúng tôi đang có kế hoạch chuyển toàn bộ khai báo (declaration) sang sử dụng export kiểu ES.
 
-In addition, if you are using TypeScript with webpack 2, the following is also recommended:
+Ngoài ra, nếu bạn đang sử dụng Typescript với Webpack 2, bạn cũng nên dùng cấu hình như sau:
 
 ``` js
 {
@@ -59,9 +60,9 @@ In addition, if you are using TypeScript with webpack 2, the following is also r
 }
 ```
 
-This tells TypeScript to leave the ES module import statements intact, which in turn allows webpack 2 to take advantage of ES-module-based tree-shaking.
+Cấu hình nhưu này cho phép Typescript giữ nguyên các lệnh import ES module, khi đó Webpack 2 sẽ tận dụng được tính năng loại bỏ các module và đoạn code thừa trên các ES module.
 
-See [TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html) for more details.
+Bạn có thể xem thêm tài liệu về [các tuỳ chọn của trình biên dịch Typescript](https://www.typescriptlang.org/docs/handbook/compiler-options.html) để biết thêm chi tiết. 
 
 ## Using Vue's Type Declarations
 
