@@ -1,20 +1,20 @@
 ---
-title: TypeScript Support
+title: Hỗ trợ Typescript
 type: guide
 order: 404
 ---
 
-## Important 2.2.0+ Change Notice for TS + webpack 2 users
+## Những chú ý về thay đổi quan trọng từ phiên bản 2.2.0+ cho người dùng Typescript + Webpack 2
 
-In Vue 2.2.0+ we introduced dist files exposed as ES modules, which will be used by default by webpack 2. Unfortunately, this introduced an unintentional breaking change because with TypeScript + webpack 2, `import Vue = require('vue')` will now return a synthetic ES module object instead of Vue itself.
+Từ phiên bản Vue 2.2.0+, chúng tôi đã đóng gói các tập tin phân phối (dist files) dưới dạng ES module, và có thể dùng trực tiếp với Webpack 2. Nhưng sự thay đổi này dẫn đến [..] breaking changes với người dùng Typescript + Webpack 2, vì khi đó lệnh `import Vue = require('Vue')` bây giờ sẽ trả về một synthetic ES module object, thay vì chính object Vue.
 
-We plan to move all official declarations to use ES-style exports in the future. Please see [Recommended Configuration](#Recommended-Configuration) below on a future-proof setup.
+Chúng tôi có kế hoạch chuyển tất cả các khai báo (declaration) sang export kiểu ES trong tương lai. Vì thế hãy sử dụng cấu hình được đề xuất dưới đây cho các ứng dụng tương lai của bạn.
 
-## Official Declaration in NPM Packages
+## Khai báo trong các gói NPM (NPM package)
 
-A static type system can help prevent many potential runtime errors, especially as applications grow. That's why Vue ships with [official type declarations](https://github.com/vuejs/vue/tree/dev/types) for [TypeScript](https://www.typescriptlang.org/) - not only in Vue core, but also for [vue-router](https://github.com/vuejs/vue-router/tree/dev/types) and [vuex](https://github.com/vuejs/vuex/tree/dev/types) as well.
+Một hệ thống kiểu tĩnh có thể giúp phát hiện được nhiều lỗi thời gian chạy (runtime error), đặc biệt khi ứng dụng trở lên lớn. Đó cũng là lý do tại sao Vue đi kèm với [khai báo kiểu]() cho [Typescript](https://typescriptlang.org/) - không chỉ core Vue, mà cả [vue-router](https://github.com/vuejs/vue-router/tree/dev/types) và [vuex](https://github.com/vuejs/vuex/tree/dev/types).  
 
-Since these are [published on NPM](https://cdn.jsdelivr.net/npm/vue/types/), and the latest TypeScript knows how to resolve type declarations in NPM packages, this means when installed via NPM, you don't need any additional tooling to use TypeScript with Vue.
+Vì các gói được phát hành trên NPM](), và phiên bản mới nhất của Typescript hiểu dược các khai báo kiểu trong các gói NPM, nên khi cài đặt Vue bằng NPM, bạn không cần phải cài thêm bất kì thứ gì khác để có thể sử dụng Typescript với Vue.
 
 ## Recommended Configuration
 
